@@ -1,0 +1,186 @@
+/* Navbar container styling */
+.navbar {
+    background-color: rgb(30, 30, 30); /* Dark background */
+    height: 6.5rem; /* Fixed height */
+    width: 100vw; /* Full viewport width */
+    margin: 0 auto; /* Center align (no additional margin needed) */
+    padding: 0 2rem; /* Horizontal padding for internal spacing */
+    display: flex; /* Flexbox for layout */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center items vertically */
+    position: sticky; /* Sticky positioning */
+    top: 0; /* Stick to the top */
+    z-index: 3; /* Ensure it's above other elements */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Add slight shadow */
+}
+
+/* Logo styling */
+.logo {
+    object-fit: cover;
+    height: 7rem;
+    width: 8rem;
+    margin-left: 0.5rem;
+}
+
+/* Desktop menu item default styling */
+.desktopMenuListItem {
+    color: white;
+    margin: 0 1rem;
+    cursor: pointer;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 2rem;
+    text-transform: capitalize;
+    transition: all 0.3s ease; /* Smooth transition for hover and active states */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Treat like a button */
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Hover effect for desktop menu items */
+.desktopMenuListItem:hover {
+    color: yellow; /* Change text color on hover */
+    background-color: rgba(255, 255, 0, 0.1); /* Optional background effect */
+    border-bottom: 3px solid yellow;
+}
+
+/* Active class for selected menu items */
+.desktopMenuListItem.active {
+    color: yellow; /* Highlight active menu item text */
+    background-color: rgba(255, 255, 0, 0.1); /* Optional background effect */
+    border-bottom: 3px solid yellow;
+}
+
+/* Button styling */
+.desktopMenuBtn {
+    background: white;
+    color: black;
+    border: none;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    margin-right: 2rem;
+    transition: transform 0.3s ease; /* Smooth scaling effect */
+    font-weight: bold;
+}
+
+/* Hover effect for buttons */
+.desktopMenuBtn:hover {
+    transform: scale(1.05);
+    color: #000;
+}
+
+/* Phone icon inside the button */
+.desktopMenuImg {
+    object-fit: cover;
+    height: 2rem;
+    text-align: left;
+    cursor: pointer;
+}
+
+/* Mobile menu styling */
+.navMenu {
+    position: absolute;
+    top: 6rem;
+    right: 2rem;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    min-width: 15rem;
+    background: rgb(40, 40, 40);
+    border-radius: 1rem;
+    align-items: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Add shadow for better visibility */
+}
+
+/* Mobile menu icon (hamburger menu) */
+.mobMenu {
+    height: 3rem;
+    width: 3rem;
+    display: none;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* Override listItem styles for closeBtn */
+.listItem.closeBtn {
+    background-color: white !important; /* Force white background */
+    color: black !important; /* Force black text */
+    border: none; /* Ensure no border */
+    padding: 0.5rem 1.5rem; /* Adjust padding */
+    text-align: center;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 1rem; /* Match the design */
+    margin-top: 0.5rem; /* Space above Close button */
+    transition: all 0.3s ease; /* Smooth transition for hover */
+}
+/* Target the X specifically */
+
+
+/* Hover effect for Close button */
+.listItem.closeBtn:hover {
+    background-color: black !important; /* Black background on hover */
+    color: white !important; /* White text on hover */
+    transform: scale(1.05); /* Slight scale-up effect */
+    border-bottom: none; /* Remove hover underline */
+}
+
+  
+/* Mobile menu button styling */
+.listItem {
+    color: black;
+    border: none;
+    padding: 0.5rem 3rem; /* More padding for larger clickable area */
+    margin: 0.3rem 0;
+    background: #ddda29c2;
+    text-align: center;
+    width: 100%; /* Make buttons full-width */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    font-size: 1rem; /* Increase font size for better visibility */
+    border-radius: 1rem; /* Match desktop menu's rounded corners */
+    text-transform: capitalize; /* Match desktop text style */
+}
+
+/* Hover effect for mobile menu items */
+.listItem:hover {
+    color: yellow; /* Change text color on hover */
+    background-color: rgba(255, 255, 0, 0.1); /* Optional background effect */
+    border-bottom: 3px solid yellow;
+}
+
+/* Show mobile menu icon on smaller screens */
+@media screen and (max-width: 1130px) {
+    .mobMenu {
+        display: flex; /* Show hamburger menu icon on mobile */
+    }
+    .desktopMenu {
+        display: none; /* Hide desktop menu on mobile */
+    }
+    .desktopMenuBtn {
+        display: none; /* Hide desktop contact button on mobile */
+    }
+}
+
+/* Adjust logo size on smaller screens */
+@media screen and (max-width: 750px) {
+    .logo {
+        height: 4rem;
+        width: 6rem;
+    }
+}
+
+/* Improve spacing on small screens */
+@media screen and (max-width: 600px) {
+    .listItem {
+        padding: 0.5rem 2rem;
+        font-size: 0.9rem;
+    }
+}

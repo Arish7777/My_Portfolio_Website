@@ -1,0 +1,213 @@
+/* Remove unwanted margin/padding from body and html */
+body, html {
+    margin: 0;
+    padding: auto;
+    width: 100%;
+    overflow-x: hidden;
+    height: 100%;   
+}
+
+/* Main Section Styling */
+/* Main Section Styling */
+#skills { 
+    text-align: center;
+    padding: 4rem 0;
+    background-color: #121212;
+    color: #fff;
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 4rem;
+    padding-top: 0;
+}
+
+/* Title Styling */
+.skillTitle {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    margin-top: 2rem;
+    padding-top: 7.5rem;
+    position: relative;
+    animation: slideDown 1s ease forwards; /* Play animation once */
+}
+
+/* Description Styling */
+.skillDesc {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    padding: 0 2rem;
+    text-align: center;
+    margin: 0 auto 2rem auto;
+    width: 80%;
+    animation: fadeInUp 1s ease forwards; /* Play animation once */
+}
+
+/* Keyframes for Animations */
+@keyframes slideDown {
+    0% { opacity: 0; transform: translateY(-50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Skills Container */
+.skillsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeIn 1.5s ease; /* Fade-in animation */
+}
+
+/* Skill Box Styling */
+.skillBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(204, 204, 19, 0.753);
+    color: black;
+    border-radius: 15px;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: slideUp 1.2s ease; /* Slide-up animation */
+}
+
+.skillBox:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4); /* Enhanced hover effect */
+    animation: hoverPulse 0.6s ease-in-out infinite; /* Pulse animation */
+    cursor: pointer;
+}
+
+/* Image Styling */
+.skillBox img {
+    width: 50px;
+    height: 60px;
+    margin-bottom: 1rem;
+    object-fit: cover;
+    animation: bounceIn 1s ease; /* Bounce-in effect */
+}
+
+/* Heading Inside Box */
+.skillBox h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+/* Paragraph Inside Box */
+.skillBox p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    animation: fadeIn 0.8s ease; /* Smooth text appearance */
+}
+
+/* Keyframes for Animations */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    0% { opacity: 0; transform: translateY(50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+    0% { opacity: 0; transform: translateY(-50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hoverPulse {
+    0%, 100% { transform: scale(1.05); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    60% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+/* Media Queries for Responsiveness */
+
+/* For Tablets (768px and below) */
+@media screen and (max-width: 768px) {
+    .skillTitle {
+        font-size: 2rem;
+    }
+    .skillDesc {
+        font-size: 1rem;
+        width: 90%;
+    }
+    .skillsContainer {
+        gap: 1rem;
+    }
+    .skillBox {
+        padding: 1rem;
+        max-width: 600px;
+    }
+    .skillBox img {
+        width: 40px;
+        height: 50px;
+    }
+    .skillBox h2 {
+        font-size: 1.3rem;
+    }
+    .skillBox p {
+        font-size: 0.9rem;
+    }
+}
+
+/* For Mobile Devices (480px and below) */
+@media screen and (max-width: 480px) {
+    .skillTitle {
+        font-size: 1.8rem;
+    }
+    .skillDesc {
+        font-size: 0.9rem;
+        padding: 0 1rem;
+    }
+    .skillsContainer {
+        width: 100%;
+        gap: 0.8rem;
+    }
+    .skillBox {
+        padding: 0.8rem;
+        max-width: 90%;
+    }
+    .skillBox img {
+        width: 35px;
+        height: 45px;
+    }
+    .skillBox h2 {
+        font-size: 1.1rem;
+    }
+    .skillBox p {
+        font-size: 0.8rem;
+    }
+}

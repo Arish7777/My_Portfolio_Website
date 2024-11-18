@@ -1,0 +1,348 @@
+/* General Styles */ 
+#contactPage {
+    width: 100%;
+    max-width: 100rem;
+    background-color: #ddda29c2;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.contactPageTitle {
+    color: #000;
+    font-size: 2.5rem;
+    margin: 8rem 0 1rem;
+    animation: slideDown 1s ease;
+}
+
+.clientDesc {
+    color: black;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 1.5rem;
+    line-height: 1.5;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.contactDesc {
+    color: black;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Services Images */
+.services-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.service-pic {
+    width: 12rem;
+    height: 12rem;
+    border-radius: 0.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: popIn 0.8s ease-in-out;
+}
+
+.service-pic:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Links Section */
+.links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeInUp 1.5s ease;
+}
+
+.link-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    animation: bounceIn 1s ease;
+}
+
+.link-container:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.link-container:active {
+    transform: scale(0.95);
+}
+
+.link {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Contact Form Styles */
+.contactForm {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    max-width: 50rem;
+    animation: fadeInUp 1.5s ease;
+}
+
+.name,
+.email,
+.msg {
+    font-size: 1rem;
+    width: 100%;
+    max-width: 40rem;
+    margin: 0.5rem;
+    padding: 0.75rem 1rem;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    background-color: white;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.name:focus,
+.email:focus,
+.msg:focus {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transform: scale(1.02);
+}
+
+.submitBtn {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    margin: 2rem 0;
+    padding: 0.75rem 3rem;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.submitBtn:hover {
+    transform: scale(1.05);
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.submitBtn:active {
+    transform: scale(0.95);
+    box-shadow: none;
+}
+
+.thank-you-message {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #f0f8ff;
+    border-radius: 0.5rem;
+    text-align: center;
+    color: #28a745;
+    animation: popIn 0.8s ease-in-out;
+}
+
+/* Keyframes for Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.8);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 1024px) {
+    .contactPageTitle {
+        font-size: 2rem;
+        margin-top: 6rem;
+    }
+
+    .service-pic {
+        width: 10rem;
+        height: 10rem;
+    }
+
+    .links {
+        gap: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .contactPageTitle {
+        font-size: 1.8rem;
+    }
+
+    .services-images {
+        gap: 1.5rem;
+    }
+
+    .service-pic {
+        width: 8rem;
+        height: 8rem;
+    }
+
+    .link-container {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .clientDesc {
+        font-size: 0.9rem;
+        padding: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .contactPageTitle {
+        font-size: 1.5rem;
+    }
+
+    .services-images {
+        gap: 1rem;
+    }
+
+    .service-pic {
+        width: 6rem;
+        height: 6rem;
+    }
+
+    .link-container {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .contactForm {
+        width: 95%;
+    }
+
+    .name,
+    .email,
+    .msg {
+        font-size: 0.9rem;
+    }
+
+    .submitBtn {
+        padding: 0.5rem 2rem;
+    }
+}
+
+/* Error Message Styles */
+.error-popup {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: #ddda29c2;
+    color: black;
+    padding: 1.5rem 2rem;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    max-width: 80%;
+    margin: auto;
+    opacity: 1;
+    visibility: visible;
+    animation: shake 0.5s ease-in-out, fadeOut 4s ease-in-out forwards;
+}
+
+/* Keyframes for Animations */
+@keyframes shake {
+    0%, 100% {
+        transform: translate(-50%, -50%);
+    }
+    25% {
+        transform: translate(-52%, -50%);
+    }
+    50% {
+        transform: translate(-48%, -50%);
+    }
+    75% {
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    90% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}

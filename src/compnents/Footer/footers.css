@@ -1,0 +1,30 @@
+.footer {
+    width: 100vw;
+    height: 3rem;
+    background-color:black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 300;
+    font-size: medium;
+    text-align: center; /* Ensure text stays centered */
+    padding: 0 1rem; /* Add padding for smaller screens */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .footer {
+        font-size: small; /* Reduce font size for smaller screens */
+        height: auto; /* Allow height to adjust based on content */
+        padding: 1rem; /* Add more padding for a cleaner look */
+        flex-wrap: wrap; /* Allow content to wrap if needed */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .footer {
+        font-size: smaller; /* Further reduce font size for very small screens */
+        text-align: center; /* Ensure proper alignment */
+        padding: 0.5rem; /* Adjust padding for compact spaces */
+    }
+}

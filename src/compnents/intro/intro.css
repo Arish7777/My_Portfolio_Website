@@ -1,0 +1,337 @@
+/* Intro Section */
+#intro {
+    height: auto;
+    min-height: calc(100vh - 4rem);
+    width: 100%;
+    max-width: 75rem;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 2rem;
+    margin-top: -6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Background Image */
+.bg {
+    position: absolute;
+    top: 8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+    object-fit: cover;
+    object-position: center;
+    height: 90vh;
+    transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+.bg:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* Intro Content */
+.introcontent {
+    position: relative;
+    text-align: left;
+    margin-top: 11rem;
+    font-size: 2rem;
+    font-family: Arial, sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: all 0.3s ease;
+}
+
+/* Greetings */
+.hello {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #f4e04d;
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInDown 1s forwards;
+}
+
+/* Typing Name Styling */
+.introname {
+    color: #f4e04d;
+    font-weight: bold;
+    animation: typeEffect 3s steps(12) forwards;
+    border-right: 2px solid #f4e04d;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* Intro Paragraph */
+.intropara {
+    font-size: 1rem;
+    font-weight: 300;
+    position: relative;
+    letter-spacing: 1px;
+    text-align: left;
+    color: #e0e0e0;
+    margin: 1.5rem 0;
+    line-height: 1.6;
+    animation: fadeIn 1s 1s forwards;
+    opacity: 0;
+}
+
+/* Hire Me Button */
+.btn {
+    background: #f4e04d;
+    color: black;
+    margin: 1rem 0;
+    padding: 0.75rem 1.25rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-transform: uppercase;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    max-width: 150px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    background-color: #e76f51;
+}
+
+/* Button Image Styling */
+.btnImg {
+    object-fit: cover;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes typeEffect {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* Responsive Design Adjustments */
+@media screen and (max-width: 1024px) {
+
+    .introcontent {
+        font-size: 1.5rem;
+        margin-top: 8rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .introcontent {
+        font-size: 1.3rem;
+        margin-top: 6rem;
+        padding: 0 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .introcontent {
+        font-size: 1.2rem;
+        margin-top: 4rem;
+        padding: 0 1rem;
+    }
+
+    .hello {
+        font-size: 1.4rem;
+    }
+
+    .btn {
+        padding: 0.5rem 1rem;
+        max-width: 120px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+/* Modal Content */
+.modal-content {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Modal Title */
+.modal-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Modal Text */
+.modal-content p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+/* Modal Buttons Container */
+.modal-buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+/* Modal Buttons Styling */
+.modal-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Download Button */
+.modal-btn.download {
+    background-color: yellow;
+    color: black;
+    border: 2px solid black;
+}
+
+.modal-btn.download:hover {
+    background-color: #ffd700;
+}
+
+/* Cancel Button */
+.modal-btn.cancel {
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+}
+
+.modal-btn.cancel:hover {
+    background-color: #333;
+}
+@media screen and (max-width: 1030px) {
+    .bg {
+        margin-left: -60vw;
+    }
+}
+
+@media screen and (max-width: 1011px) {
+    .bg {
+        margin-left: -8vw;
+    }
+}
+@media screen and (max-width: 920px) {
+    .bg {
+        margin-left: -70vw;
+    }
+}
+@media screen and (max-width: 780px) {
+    .bg {
+        margin-left: -50vw;
+    }
+}
+@media screen and (max-width: 690px) {
+    .bg {
+        margin-left: -32vw;
+    }
+}
+@media screen and (max-width: 610px) {
+    .bg {
+        margin-left: -50vw;
+    }
+}
+@media screen and (max-width: 515px) {
+    .bg {
+        margin-left: -60vw;
+    }
+}
+@media screen and (max-width: 488px) {
+    .bg {
+        margin-left: -100vw;
+    }
+    .introcontent{
+        margin-top: 13rem;
+        font: 1rem;
+    }
+}
+@media screen and (max-width: 415px) {
+    .bg {
+        margin-left: -100vw;
+    }
+    .introcontent{
+        margin-top: 13rem;
+        font: 1rem;
+    }
+}
+@media screen and (max-width: 350px) {
+    .bg {
+        margin-left: -120vw;
+    }
+    .introcontent{
+        margin-top: 13rem;
+        font: 1rem;
+    }
+}
