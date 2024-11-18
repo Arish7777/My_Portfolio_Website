@@ -10,7 +10,7 @@ import pic4 from "./pic4.png";
 const projects = [
   {
     image: pic1,
-    title: "Book Recommender System",
+    title: "Book Recommend System",
     description: "This project recommends books to people on basis of popularity, similar description and similar ratings.",
     githubLink: "https://github.com/zayamziamalik/Book-Recommender-System.git",
   },
@@ -28,7 +28,7 @@ const projects = [
   },
   {
     image: pic4,
-    title: "Bank Management System",
+    title: "Bank Managing System",
     description: "A Bank Management System based on OOP Concepts that streamlines and automates banking operations such as account management and transactions.",
     githubLink: "https://github.com/Arish7777/Bank-Management-System",
   },

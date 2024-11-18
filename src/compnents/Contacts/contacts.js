@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import './contacts.css';
 import pic1 from './AI_Services1.png';
 import pic2 from './AI_Services2.png';
@@ -15,45 +14,21 @@ const Contact = () => {
   const form = useRef();
   const [thankYouMessage, setThankYouMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-
-  const showError = (message) => {
-    setErrorMessage(message);
-
-    // Reset the error message to re-trigger the animation
-    setTimeout(() => {
-      setErrorMessage('');
-    }, 4000); // Matches the duration of the CSS `fadeOut` animation
-  };
-
-  const validateForm = () => {
-    const name = form.current.from_name.value.trim();
-    const email = form.current.from_email.value.trim();
-    const message = form.current.message.value.trim();
-
-    if (!name) {
-      showError('Please enter your name.');
-      return false;
-    }
-
-    if (!email || !/\S+@\S+\.\S+/.test(email)) {
-      showError('Please enter a valid email address.');
-      return false;
-    }
-
-    if (!message) {
-      showError('Please enter your message.');
-      return false;
-    }
-
-    return true;
-  };
+  const [userName, setUserName] = useState('');
 
   const sendEmail = (e) => {
     e.preventDefault();
 
-    if (!validateForm()) return;
-
     const name = form.current.from_name.value;
+    const email = form.current.from_email.value;
+
+    // Email Validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setErrorMessage('Please enter a valid email address.');
+      setTimeout(() => setErrorMessage(''), 3000); // Clear error message after 3 seconds
+      return;
+    }
 
     emailjs
       .sendForm('service_m7ussod', 'template_lree3xf', form.current, {
@@ -62,7 +37,9 @@ const Contact = () => {
       .then(
         () => {
           form.current.reset();
+          setUserName(name);
           setThankYouMessage(`Thank you, ${name}, for reaching out!`);
+
           setTimeout(() => {
             window.scrollTo({
               top: 0,
@@ -76,93 +53,123 @@ const Contact = () => {
         },
         (error) => {
           console.log('FAILED...', error.text);
-        }
+        },
       );
   };
 
   return (
-    <motion.section
-      id="contactPage"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-    >
-      <motion.div
-        id="clients"
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-      >
-        {/* Services Section */}
-      </motion.div>
+    <section id="contactPage">
+      <div id="clients">
+        <h1 className="contactPageTitle">My Services</h1>
+        <p className="clientDesc">
+          As an AI developer, I specialize in creating intelligent solutions by developing machine learning models,
+          building conversational AI systems, and automating tasks using AI technologies.
+          My services focus on enhancing efficiency, solving complex problems,
+          and delivering data-driven insights tailored to the needs of businesses and individuals.
+        </p>
 
-      <motion.div
-        id="contact"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
-      >
+        {/* Images Section */}
+        <div className="services-images">
+          <img src={pic1} alt="Service 1" className="service-pic" />
+          <img src={pic2} alt="Service 2" className="service-pic" />
+          <img src={pic3} alt="Service 3" className="service-pic" />
+          <img src={pic4} alt="Service 4" className="service-pic" />
+        </div>
+
+        <div className="links">
+          {/* GitHub Link */}
+          <div className="link-container">
+            <a
+              href="https://github.com/Arish7777"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.currentTarget.blur()}
+            >
+              <img src={Github} alt="Github" className="link" />
+            </a>
+          </div>
+
+          {/* LinkedIn Link */}
+          <div className="link-container">
+            <a
+              href="https://www.linkedin.com/in/muhammad-arish-248471283/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.currentTarget.blur()}
+            >
+              <img src={Linkedin} alt="LinkedIn" className="link" />
+            </a>
+          </div>
+
+          {/* Instagram Link */}
+          <div className="link-container">
+            <a
+              href="https://www.instagram.com/arshi._.x7/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.currentTarget.blur()}
+            >
+              <img src={Instagram} alt="Instagram" className="link" />
+            </a>
+          </div>
+
+          {/* Facebook Link */}
+          <div className="link-container">
+            <a
+              href="https://www.facebook.com/muhammad.areesh.180"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.currentTarget.blur()}
+            >
+              <img src={Facebook} alt="Facebook" className="link" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div id="contact">
         <h1 className="contactPageTitle">Contact Me</h1>
         <span className="contactDesc">Please fill out the form below to discuss any work opportunities</span>
 
+        {/* Error Message Popup */}
+        {errorMessage && (
+          <div className="error-message animated-popup">
+            <h2>{errorMessage}</h2>
+          </div>
+        )}
+
+        {/* Thank You Message Popup */}
         {thankYouMessage && (
-          <motion.div
-            className="thank-you-message"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
+          <div className="thank-you-message animated-popup">
             <h2>{thankYouMessage}</h2>
-          </motion.div>
+          </div>
         )}
 
         <form className="contactForm" ref={form} onSubmit={sendEmail}>
-          <motion.input
+          <input
             type="text"
             className="name"
             placeholder="Your Name"
             name="from_name"
-            whileFocus={{ scale: 1.05 }}
           />
-          <motion.input
+          <input
             type="email"
             className="email"
             placeholder="Your Email"
             name="from_email"
-            whileFocus={{ scale: 1.05 }}
           />
-          <motion.textarea
+          <textarea
             className="msg"
             name="message"
             rows="5"
             placeholder="Your Message"
-            whileFocus={{ scale: 1.05 }}
-          ></motion.textarea>
-          <motion.button
-            type="submit"
-            className="submitBtn"
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.3 }}
-          >
+          ></textarea>
+          <button type="submit" value="Send" className="submitBtn">
             Submit
-          </motion.button>
+          </button>
         </form>
-
-        <AnimatePresence>
-          {errorMessage && (
-            <motion.div
-              className="error-popup"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <p>{errorMessage}</p>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.div>
-    </motion.section>
+      </div>
+    </section>
   );
 };
 

@@ -1,4 +1,4 @@
-/* General Styles */ 
+/* General Styles */
 #contactPage {
     width: 100%;
     max-width: 100rem;
@@ -57,6 +57,7 @@
 .service-pic:hover {
     transform: scale(1.2);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
 }
 
 /* Links Section */
@@ -133,8 +134,9 @@
 }
 
 .submitBtn {
-    background: white;
-    border: 1px solid #ccc;
+    background: black;
+    color: white;
+    border: 1px solid black;
     border-radius: 0.5rem;
     margin: 2rem 0;
     padding: 0.75rem 3rem;
@@ -143,7 +145,8 @@
 
 .submitBtn:hover {
     transform: scale(1.05);
-    background-color: #f9f9f9;
+    background-color: #ddda29c2;
+    color: black;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
@@ -163,7 +166,76 @@
     animation: popIn 0.8s ease-in-out;
 }
 
-/* Keyframes for Animations */
+/* Enhanced Error Popup Message */
+.error-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    color: #fff;
+    padding: 2rem 3rem;
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    max-width: 90%;
+    margin: auto;
+    opacity: 1;
+    visibility: visible;
+    animation: popupEnter 0.8s ease, fadeOut 5s ease-in-out 4s forwards;
+}
+
+.error-popup::after {
+    content: "×";
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.error-popup::after:hover {
+    transform: scale(1.2);
+    color: #fad0c4;
+}
+
+/* Animations */
+@keyframes popupEnter {
+    0% {
+        transform: translate(-50%, -70%) scale(0.8);
+        opacity: 0;
+    }
+    60% {
+        transform: translate(-50%, -50%) scale(1.05);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    90% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* Keyframes for Other Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -280,69 +352,65 @@
     }
 
     .contactForm {
-        width: 95%;
-    }
-
-    .name,
-    .email,
-    .msg {
-        font-size: 0.9rem;
-    }
-
-    .submitBtn {
-        padding: 0.5rem 2rem;
+        margin: 0.5rem;
+        padding: 0;
     }
 }
-
-/* Error Message Styles */
-.error-popup {
+/* Error Message Popup */
+.error-message {
     position: fixed;
-    top: 20%;
+    top: 10%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
+    background-color: #f44336; /* Red background for error */
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     z-index: 1000;
-    background-color: #ddda29c2;
-    color: black;
-    padding: 1.5rem 2rem;
-    border: 1px solid black;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     font-size: 1rem;
     font-weight: bold;
     text-align: center;
-    max-width: 80%;
-    margin: auto;
-    opacity: 1;
-    visibility: visible;
-    animation: shake 0.5s ease-in-out, fadeOut 4s ease-in-out forwards;
-}
-
-/* Keyframes for Animations */
-@keyframes shake {
-    0%, 100% {
-        transform: translate(-50%, -50%);
-    }
-    25% {
-        transform: translate(-52%, -50%);
-    }
-    50% {
-        transform: translate(-48%, -50%);
-    }
-    75% {
-        transform: translate(-50%, -50%);
-    }
-}
-
-@keyframes fadeOut {
+    opacity: 0;
+    animation: fadeInOut 3s ease-out forwards;
+  }
+  
+  /* Animation for Error Popup */
+  @keyframes fadeInOut {
     0% {
-        opacity: 1;
-        visibility: visible;
+      opacity: 0;
+      transform: translate(-50%, -10%);
+    }
+    10% {
+      opacity: 1;
+      transform: translate(-50%, 0);
     }
     90% {
-        opacity: 0.5;
+      opacity: 1;
+      transform: translate(-50%, 0);
     }
     100% {
-        opacity: 0;
-        visibility: hidden;
+      opacity: 0;
+      transform: translate(-50%, -10%);
     }
-}
+  }
+  
+  /* Thank You Message Popup (Optional) */
+  .thank-you-message {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4caf50; /* Green background for success */
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0;
+    animation: fadeInOut 3s ease-out forwards;
+  }
+  
