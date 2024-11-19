@@ -2,8 +2,9 @@
 #contactPage {
     width: 100%;
     max-width: 100rem;
+    top: 4rem;
     background-color: #ddda29c2;
-    margin: 0 auto;
+    margin: 1 auto;
     text-align: center;
     display: flex;
     flex-direction: column;

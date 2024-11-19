@@ -15,6 +15,7 @@ const Navbar = () => {
     { id: 'skills', label: 'About Me' },
     { id: 'works', label: 'My Projects' },
     { id: 'clients', label: 'My Services' },
+    { id: 'contact', label: 'Contact' }, // Added Contact button
   ];
 
   // Intersection Observer to track active sections
