@@ -4,7 +4,7 @@ import './footers.css'
 const Footers = () => {
   return (
     <footer className="footer">
-       © 2024 Muhammad Arish Khan. All Rights Reserved.
+       © 2025 Muhammad Arish Khan. All Rights Reserved.
     </footer>
   )
 }

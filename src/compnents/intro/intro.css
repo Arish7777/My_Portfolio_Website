@@ -1,5 +1,5 @@
-/* Intro Section */
-#intro {
+ /* Intro Section */
+ #intro {
     height: auto;
     min-height: calc(100vh - 4rem);
     width: 100%;
@@ -7,7 +7,7 @@
     margin: 0 auto;
     position: relative;
     padding: 0 2rem;
-    margin-top: -6rem;
+    margin-top: -4rem;
     display: flex;
     flex-direction: column;
     justify-content: center;

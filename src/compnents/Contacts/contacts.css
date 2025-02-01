@@ -1,10 +1,9 @@
 /* General Styles */
 #contactPage {
-    width: 100%;
-    max-width: 100rem;
-    top: 4rem;
-    background-color: #ddda29c2;
-    margin: 1 auto;
+    width: 100vw; /* Ensure full width */
+    min-height: 100vh; /* Ensure it covers the full viewport height */
+    background-color: #ddda29; /* Remove transparency to ensure consistency */
+    margin: 0; /* Remove incorrect margin value */
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -14,6 +13,7 @@
     box-sizing: border-box;
     animation: fadeIn 1s ease-in-out;
 }
+
 
 .contactPageTitle {
     color: #000;

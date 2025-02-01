@@ -1,10 +1,10 @@
 /* Main Section */
 #works { 
-    margin: 0 auto;
-    min-height: calc(100vh - 4rem);
-    width: 100vw;
+    margin: 0;
+    min-height: 100vh; /* Ensures it covers the full viewport height */
+    width: 100vw; /* Ensures full width */
     background-color: #121212;
-    max-width: 100rem;
+    max-width: 100%; /* Prevents any max-width limitation */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,8 +17,8 @@
 /* Title Styling */
 .worksTitle {
     margin: 1rem 0;
-    font-size: 3rem;
-    margin-top: 8rem;
+    font-size: 2.8rem; /* Adjusted for better responsiveness */
+    margin-top: 6rem;
     color: white;
     animation: slideInDown 0.8s ease-out;
 }
@@ -29,7 +29,7 @@
     font-size: 1.1rem;
     margin-bottom: 2rem;
     color: #ccc;
-    line-height: 1.8;
+    line-height: 1.6; /* Slightly reduced to fit in smaller screens */
     max-width: 60rem;
     animation: slideInUp 0.8s ease-out;
 }
@@ -40,77 +40,85 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    width: 60vw;
+    width: 80%;
     max-width: 90rem;
 }
 
 /* Project Card Styling */
 .worksImgCard {
     background: #ddda29c2;
-    padding: 1rem; /* Ensures spacing inside the card */
+    padding: 1rem;
     border-radius: 1rem;
     box-shadow: 0px 4px 15px #ddda29c2;
     margin: 1rem;
-    width: 80%;
-    max-width: 60rem;
+    width: 90%;
+    max-width: 45rem;
     text-align: left;
     animation: zoomIn 0.8s ease-out;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     font-size: small;
-    overflow: hidden; /* Prevents overflowing content */
-    word-wrap: break-word; /* Wraps long words inside the box */
+    overflow: hidden;
+    word-wrap: break-word;
 }
+
 
 .worksImgCard:hover {
     transform: scale(1.05);
     box-shadow: 0px 6px 20px #ddda29c2;
 }
-
-/* Project Image */
-.worksImg {
-    object-fit: cover;
-    height: 18rem;
-    width: 100%;
-    border-radius: 1rem;
-    margin-bottom: 1.2rem;
-    animation: fadeIn 0.8s ease-in-out;
-}
-
 /* Card Content */
 .worksCardContent {
     color: black;
 }
-
-.worksCardTitle {
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    animation: fadeInRight 0.8s ease-in-out;
-    word-wrap: break-word; /* Ensures long titles wrap properly */
-    line-height: 1.2; /* Maintains spacing between lines */
-    text-align: center; /* Centers the title within the card */
-}
-
-.worksCardDesc {
-    font-size: 1.1rem;
-    line-height: 1.6;
+.projectButton {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4caf50;
     color: black;
-    animation: fadeInLeft 0.8s ease-in-out;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
+.projectButton:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+}
+/* Project Image */
+.worksImg {
+    object-fit: cover;
+    height: 16rem;
+    width: 100%;
+    border-radius: 1rem;
+    margin-bottom: 1.2rem;
+}
+
 
 /* Button Styling */
 .worksBtn {
-    margin: 3rem 0;
-    padding: 0.8rem 2.5rem;
+    margin: 2rem 0;
+    padding: 0.8rem 2rem;
     border: none;
     border-radius: 2rem;
     background: white;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
     color: #000;
     box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
     animation: fadeIn 1s ease-in-out;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Ensure "See More" button remains within the mobile screen */
+.worksBtn {
+    position: relative;
+    bottom: 0;
+    width: 90%;
+    max-width: 15rem;
+    text-align: center;
 }
 
 .worksBtn:hover {
@@ -119,95 +127,10 @@
     box-shadow: 0px 6px 15px rgba(255, 255, 255, 0.5);
 }
 
-/* Project Button Styling */
-.projectButton {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.projectButton:hover {
-    background-color: #45a049;
-    transform: scale(1.1);
-    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
-}
-
-/* Keyframes for Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideInDown {
-    from {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideInUp {
-    from {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes zoomIn {
-    from {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-@keyframes fadeInRight {
-    from {
-        transform: translateX(-50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes fadeInLeft {
-    from {
-        transform: translateX(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
 /* Responsive styles */
 @media (max-width: 1024px) {
     .worksImgCard {
-        width: 90%;
+        width: 95%;
     }
     .worksTitle {
         font-size: 2.5rem;
@@ -215,18 +138,11 @@
     .worksDesc {
         font-size: 1rem;
     }
-    .worksCardTitle {
-        font-size: 1.6rem; /* Adjusts heading size */
-    }
-    .projectButton {
-        font-size: 14px;
-        padding: 8px 16px;
-    }
 }
 
 @media (max-width: 768px) {
     .worksImgCard {
-        width: 95%;
+        width: 100%;
     }
     .worksImg {
         height: auto;
@@ -238,15 +154,8 @@
         font-size: 0.9rem;
     }
     .worksBtn {
-        padding: 0.5rem 2rem;
+        padding: 0.6rem 1.8rem;
         font-size: 1rem;
-    }
-    .worksCardTitle {
-        font-size: 1.4rem; /* Adjusts heading size */
-    }
-    .projectButton {
-        font-size: 13px;
-        padding: 6px 12px;
     }
 }
 
@@ -256,23 +165,17 @@
     }
     .worksImgCard {
         width: 100%;
-        padding: 1.5rem;
+        padding: 1.2rem;
     }
     .worksTitle {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
     .worksDesc {
-        font-size: 0.8rem;
+        font-size: 0.85rem;
     }
     .worksBtn {
         padding: 0.5rem 1.5rem;
         font-size: 0.9rem;
-    }
-    .worksCardTitle {
-        font-size: 1.2rem; /* Adjusts heading size */
-    }
-    .projectButton {
-        font-size: 12px;
-        padding: 5px 10px;
+        bottom: 10px;
     }
 }

@@ -5,9 +5,23 @@ import pic1 from "./blank.jpg";
 import pic2 from "./pic2.jpg";
 import pic3 from "./pic3.png";
 import pic4 from "./pic4.png";
+import pic5 from "./pic5.jpg";
+import pic6 from "./pic6.jpg";
 
 // Projects data
 const projects = [
+  {
+    image: pic6,
+    title: "Multi-Layer Neural Network",
+    description: "This project involves implementing a multi-layer neural network from scratch. The aim is to explore the workflow, methodology, and performance of neural networks while addressing challenges in training, evaluation, and optimization.",
+    githubLink: "https://github.com/Arish7777/NeuralNetwork",
+  },
+  {
+    image: pic5,
+    title: "Online Inventory Management System",
+    description: "The primary objective of the Inventory Management System (IMS) is to provide a comprehensive, user-friendly software solution that streamlines inventory management processes for retail businesses",
+    githubLink: "https://github.com/Arish7777/Inventory_Management",
+  },
   {
     image: pic1,
     title: "Book Recommend System",

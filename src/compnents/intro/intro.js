@@ -25,8 +25,8 @@ const Intro = () => {
 
   const handleDownloadResume = () => {
     const link = document.createElement("a");
-    link.href = "./Muhammad Arish Khan Resume Final.pdf";
-    link.download = "Muhammad_Arish_Khan_Resume.pdf";
+    link.href = "./My_New_Resume.pdf";
+    link.download = "My_New_Resume.pdf";
     link.click();
     setShowModal(false);
   };

@@ -1,7 +1,7 @@
 /* Navbar container styling */
 .navbar {
     background-color: rgb(30, 30, 30); /* Dark background */
-    height: 6.5rem; /* Fixed height */
+    height: 4.5rem; /* Fixed height */
     width: 100vw; /* Full viewport width */
     margin: 0 auto; /* Center align (no additional margin needed) */
     padding: 0 2rem; /* Horizontal padding for internal spacing */
@@ -17,8 +17,8 @@
 /* Logo styling */
 .logo {
     object-fit: cover;
-    height: 7rem;
-    width: 8rem;
+    height: 5.5rem;
+    width: 6rem;
     margin-left: 0.5rem;
 }
 
