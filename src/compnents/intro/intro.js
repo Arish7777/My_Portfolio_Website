@@ -25,8 +25,8 @@ const Intro = () => {
 
   const handleDownloadResume = () => {
     const link = document.createElement("a");
-    link.href = "./My_New_Resume.pdf";
-    link.download = "My_New_Resume.pdf";
+    link.href = "./Arish_Resume_Final (1).pdf";
+    link.download = "Arish_Resume_Final (1).pdf";
     link.click();
     setShowModal(false);
   };
