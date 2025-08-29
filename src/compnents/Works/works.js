@@ -10,7 +10,7 @@ import pic4 from "./pic4.png";
 import pic5 from "./pic5.jpg";
 import pic6 from "./pic6.jpg";
 import pic7 from "./pic7.jpg";
-
+import pic8 from "./pic8.png";
 
 // Projects data
 const projects = [
@@ -19,6 +19,12 @@ const projects = [
     title: "VAND 3.0 Challenge (CVPR 2025) — MVTec AD 2 Dataset” - Prompt-Based Anomaly Detection for Industrial Inspection Network",
     description: "Developed an unsupervised anomaly detection system leveraging CLIP’s vision-language model to identify and localize defects in industrial images. The model,trained solely on normal data, achieved 85.4 percent image-AUC and demonstrated robustness to real-world distribution shifts like lighting variations for the VAND 3.0 Challenge (CVPR 2025).",
     githubLink: "https://github.com/Arish7777/CVPR-Challenge-Advanced-Scenarios-for-Unsupervised-Anomaly-Detection",
+  },
+  {
+    image: pic8,
+    title: "Secure Chat Application-SocketIO",
+    description: "A secure, real-time chat application with end-to-end encryption, built using Flask, Flask-SocketIO, and custom client/server architecture",
+    githubLink: "https://github.com/Arish7777/Secure_Chat_App",
   },
   {
     image: pic6,
