@@ -1,0 +1,30 @@
+{
+  "short_name": "Arish Portfolio",
+  "name": "Arish's Portfolio - AI Developer",
+  "icons": [
+    {
+      "src": "navimg.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "navimg.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "navimg.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "orientation": "portrait",
+  "description": "Portfolio website showcasing AI development projects and skills",
+  "dir": "ltr",
+  "lang": "en-US",
+  "prefer_related_applications": false
+}
