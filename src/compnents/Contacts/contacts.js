@@ -1,5 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { motion, AnimatePresence } from 'framer-motion';
 import './contacts.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import pic1 from './img1.jpg';
 import pic2 from './img2.jpg';
 import pic3 from './img3.jpg';
@@ -152,20 +155,42 @@ const Contact = () => {
   };
 
   return (
-    <section id="contactPage">
-      <div id="clients">
-        <h1 className="contactPageTitle">My Services</h1>
-        <p className="clientDesc">
+    <motion.section 
+      id="contactPage"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
+      <Container fluid className="clients-container text-center">
+        <motion.h1 
+          className="contactPageTitle text-center"
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          My Services
+        </motion.h1>
+        <motion.p 
+          className="clientDesc text-center"
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
           As an AI developer, I specialize in creating intelligent solutions by developing machine learning models,
           building conversational AI systems, and automating tasks using AI technologies.
           My services focus on enhancing efficiency, solving complex problems,
           and delivering data-driven insights tailored to the needs of businesses and individuals.
-        </p>
+        </motion.p>
 
         {/* Enhanced Slideshow Section */}
-        <div className="slideshow-wrapper-container">
+        <motion.div 
+          className="slideshow-wrapper-container"
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
           <div 
-            className="slideshow-container"
+            className="slideshow-container shadow-lg"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
             onTouchStart={handleTouchStart}
@@ -239,9 +264,14 @@ const Contact = () => {
               </div>
             )}
           </div>
-        </div>
+        </motion.div>
 
-        <div className="links">
+        <motion.div 
+          className="links d-flex justify-content-center align-items-center gap-4 mt-5"
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
           {/* GitHub Link */}
           <div className="link-container">
             <a
@@ -289,55 +319,119 @@ const Contact = () => {
               <img src={Facebook} alt="Facebook" className="link" />
             </a>
           </div>
-        </div>
-      </div>
+        </motion.div>
 
-      <div id="contact">
-        <h1 className="contactPageTitle">Contact Me</h1>
-        <span className="contactDesc">Please fill out the form below to discuss any work opportunities</span>
+        <motion.div 
+          id="contact"
+          className="contact-section mt-5 pt-5"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.h1 
+            className="contactPageTitle text-center mb-4"
+            initial={{ y: -30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            Contact Me
+          </motion.h1>
 
-        {/* Error Message Popup */}
-        {errorMessage && (
-          <div className="error-message animated-popup">
-            <h2>{errorMessage}</h2>
-          </div>
-        )}
+          <motion.p 
+            className="contactDesc text-center mb-5"
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Please fill out the form below to discuss any work opportunities
+          </motion.p>
 
-        {/* Thank You Message Popup */}
-        {thankYouMessage && (
-          <div className="thank-you-message animated-popup">
-            <h2>{thankYouMessage}</h2>
-          </div>
-        )}
+          <Row className="justify-content-center">
+            <Col md={8} lg={6}>
+              <motion.div
+                className="contact-form-wrapper"
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                <Form className="contact-form p-4" ref={form} onSubmit={sendEmail}>
+                  <AnimatePresence>
+                    {errorMessage && (
+                      <motion.div
+                        className="alert alert-danger"
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {errorMessage}
+                      </motion.div>
+                    )}
 
-        <form className="contactForm" ref={form} onSubmit={sendEmail}>
-          <input
-            type="text"
-            className="name"
-            placeholder="Your Name"
-            name="from_name"
-            required
-          />
-          <input
-            type="email"
-            className="email"
-            placeholder="Your Email"
-            name="from_email"
-            required
-          />
-          <textarea
-            className="msg"
-            name="message"
-            rows="5"
-            placeholder="Your Message"
-            required
-          ></textarea>
-          <button type="submit" value="Send" className="submitBtn">
-            Submit
-          </button>
-        </form>
-      </div>
-    </section>
+                    {thankYouMessage && (
+                      <motion.div
+                        className="alert alert-success"
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {thankYouMessage}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  <Form.Group className="mb-3">
+                    <Form.Control
+                      type="text"
+                      name="from_name"
+                      placeholder="Your Name"
+                      required
+                      className="form-input"
+                    />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3">
+                    <Form.Control
+                      type="email"
+                      name="from_email"
+                      placeholder="Your Email"
+                      required
+                      className="form-input"
+                    />
+                  </Form.Group>
+
+                  <Form.Group className="mb-4">
+                    <Form.Control
+                      as="textarea"
+                      name="message"
+                      rows={5}
+                      placeholder="Your Message"
+                      required
+                      className="form-input"
+                    />
+                  </Form.Group>
+
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Button
+                      type="submit"
+                      className="submit-btn w-100"
+                      variant="outline-light"
+                    >
+                      Send Message
+                      <i className="fas fa-paper-plane ms-2"></i>
+                    </Button>
+                  </motion.div>
+                </Form>
+              </motion.div>
+            </Col>
+          </Row>
+        </motion.div>
+      </Container>
+    </motion.section>
   );
 };
 

@@ -4,13 +4,75 @@
     box-sizing: border-box;
     text-decoration: none;
     background: transparent;
-    font-family: 'Poppins',sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --primary-color: #0a192f;
+    --secondary-color: #4deeea;
+    --text-primary: #ffffff;
+    --text-secondary: #a8b2d1;
+    --highlight-color: #4deeea;
+    --dark-navy: #0a192f;
+    --light-navy: #112240;
+    --gradient-start: rgba(10, 25, 47, 0.8);
+    --gradient-end: rgba(2, 12, 27, 0.9);
 }
 
 body {
-    background-color: rgb(30, 30, 30);
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--text-primary);
     overflow: hidden;
     overflow-y: scroll;
+    position: relative;
+}
 
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, var(--gradient-start), var(--gradient-end));
+    z-index: -1;
+}
+
+/* AI-themed grid pattern overlay */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(77, 238, 234, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(77, 238, 234, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark-navy);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--highlight-color);
 }

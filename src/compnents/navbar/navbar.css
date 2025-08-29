@@ -1,171 +1,236 @@
 /* Navbar container styling */
+.custom-navbar-container {
+    width: 100%;
+    position: relative;
+    z-index: 1000;
+}
+
 .navbar {
-    background-color: rgb(30, 30, 30); /* Dark background */
-    height: 4.5rem; /* Fixed height */
-    width: 100vw; /* Full viewport width */
-    margin: 0 auto; /* Center align (no additional margin needed) */
-    padding: 0 2rem; /* Horizontal padding for internal spacing */
-    display: flex; /* Flexbox for layout */
-    justify-content: space-between; /* Space between items */
-    align-items: center; /* Center items vertically */
-    position: sticky; /* Sticky positioning */
-    top: 0; /* Stick to the top */
-    z-index: 3; /* Ensure it's above other elements */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Add slight shadow */
+    background-color: rgba(10, 25, 47, 0.9) !important;
+    backdrop-filter: blur(10px);
+    padding: 0.5rem 1rem !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(77, 238, 234, 0.1);
+    transition: all 0.3s ease;
 }
 
 /* Logo styling */
 .logo {
     object-fit: cover;
-    height: 5.5rem;
-    width: 6rem;
-    margin-left: 0.5rem;
+    height: 4.5rem;
+    width: 5rem;
+    filter: drop-shadow(0 0 10px rgba(77, 238, 234, 0.1));
+}
+
+/* Desktop menu container - ensure it's visible */
+.desktopMenu {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
 }
 
 /* Desktop menu item default styling */
 .desktopMenuListItem {
-    color: white;
-    margin: 0 1rem;
+    color: var(--text-secondary, #8892b0) !important;
     cursor: pointer;
     border: none;
-    padding: 0.5rem 1.5rem;
-    border-radius: 2rem;
+    position: relative;
     text-transform: capitalize;
-    transition: all 0.3s ease; /* Smooth transition for hover and active states */
-    text-decoration: none; /* Remove underline */
-    display: inline-block; /* Treat like a button */
+    transition: all 0.3s ease;
+    text-decoration: none !important;
     font-size: 1rem;
     font-weight: 500;
+    letter-spacing: 0.5px;
+    background: transparent !important;
+    padding: 0.5rem 1rem !important;
+    display: inline-block;
 }
 
-/* Hover effect for desktop menu items */
+/* Hover effect for desktop menu items with modern underline animation */
+.desktopMenuListItem::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--secondary-color, #4deeea);
+    transition: width 0.3s ease;
+    opacity: 0.9;
+}
+
 .desktopMenuListItem:hover {
-    color: yellow; /* Change text color on hover */
-    background-color: rgba(255, 255, 0, 0.1); /* Optional background effect */
-    border-bottom: 3px solid yellow;
+    color: var(--text-primary, #ccd6f6) !important;
+}
+
+.desktopMenuListItem:hover::after {
+    width: 100%;
 }
 
 /* Active class for selected menu items */
 .desktopMenuListItem.active {
-    color: yellow; /* Highlight active menu item text */
-    background-color: rgba(255, 255, 0, 0.1); /* Optional background effect */
-    border-bottom: 3px solid yellow;
+    color: var(--secondary-color, #4deeea) !important;
+}
+
+.desktopMenuListItem.active::after {
+    width: 100%;
+    background-color: var(--secondary-color, #4deeea);
 }
 
 /* Button styling */
 .desktopMenuBtn {
-    background: white;
-    color: black;
-    border: none;
+    background: transparent !important;
+    color: var(--secondary-color, #4deeea) !important;
+    border: 1px solid var(--secondary-color, #4deeea) !important;
     height: 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 1rem;
-    border-radius: 2rem;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 1rem !important;
+    border-radius: 2rem !important;
     cursor: pointer;
-    margin-right: 2rem;
-    transition: transform 0.3s ease; /* Smooth scaling effect */
-    font-weight: bold;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    font-weight: 600;
+    margin-left: 1rem;
 }
 
 /* Hover effect for buttons */
 .desktopMenuBtn:hover {
-    transform: scale(1.05);
-    color: #000;
+    transform: translateY(-2px);
+    color: #0a192f !important;
+    background-color: var(--secondary-color, #4deeea) !important;
 }
 
 /* Phone icon inside the button */
 .desktopMenuImg {
     object-fit: cover;
-    height: 2rem;
+    height: 1.25rem;
+    width: 1.25rem;
     text-align: left;
-    cursor: pointer;
+    margin-right: 0.5rem;
 }
 
 /* Mobile menu styling */
 .navMenu {
-    position: absolute;
-    top: 6rem;
+    position: fixed;
+    top: 5rem;
     right: 2rem;
-    z-index: 2;
+    z-index: 1030;
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    padding: 1.5rem;
     min-width: 15rem;
-    background: rgb(40, 40, 40);
+    background: rgba(17, 34, 64, 0.95);
     border-radius: 1rem;
     align-items: center;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Add shadow for better visibility */
+    box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(77, 238, 234, 0.15);
 }
 
 /* Mobile menu icon (hamburger menu) */
 .mobMenu {
-    height: 3rem;
-    width: 3rem;
-    display: none;
+    height: 2.5rem;
+    width: 2.5rem;
     object-fit: cover;
     cursor: pointer;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
+    display: none; /* Hide by default */
+}
+
+.custom-toggler {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    display: none !important; /* Hide by default */
+}
+
+/* Mobile menu items */
+.listItem {
+    background-color: transparent !important;
+    color: var(--text-secondary, #8892b0) !important;
+    border: none !important;
+    padding: 0.5rem 1rem !important;
+    text-align: center;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%;
+    transition: all 0.3s ease;
+    text-decoration: none !important;
+    border-bottom: 1px dashed rgba(77, 238, 234, 0.2);
+    border-radius: 0.5rem;
+    margin: 0.2rem 0;
+}
+
+.listItem.active {
+    color: var(--secondary-color, #4deeea) !important;
 }
 
 /* Override listItem styles for closeBtn */
 .listItem.closeBtn {
-    background-color: white !important; /* Force white background */
-    color: black !important; /* Force black text */
-    border: none; /* Ensure no border */
-    padding: 0.5rem 1.5rem; /* Adjust padding */
+    background-color: transparent !important;
+    color: #dc3545 !important;
+    border: 1px solid #dc3545 !important;
+    padding: 0.5rem 1.5rem !important;
     text-align: center;
     cursor: pointer;
     font-size: 1rem;
-    border-radius: 1rem; /* Match the design */
-    margin-top: 0.5rem; /* Space above Close button */
-    transition: all 0.3s ease; /* Smooth transition for hover */
+    border-radius: 0.5rem !important;
+    transition: all 0.3s ease;
+    margin-top: 1rem !important;
 }
-/* Target the X specifically */
-
 
 /* Hover effect for Close button */
 .listItem.closeBtn:hover {
-    background-color: black !important; /* Black background on hover */
-    color: white !important; /* White text on hover */
-    transform: scale(1.05); /* Slight scale-up effect */
-    border-bottom: none; /* Remove hover underline */
-}
-
-  
-/* Mobile menu button styling */
-.listItem {
-    color: black;
-    border: none;
-    padding: 0.5rem 3rem; /* More padding for larger clickable area */
-    margin: 0.3rem 0;
-    background: #ddda29c2;
-    text-align: center;
-    width: 100%; /* Make buttons full-width */
-    cursor: pointer;
-    transition: all 0.3s ease; /* Smooth transition for hover effects */
-    font-size: 1rem; /* Increase font size for better visibility */
-    border-radius: 1rem; /* Match desktop menu's rounded corners */
-    text-transform: capitalize; /* Match desktop text style */
+    background-color: #dc3545 !important;
+    color: white !important;
+    transform: translateY(-2px);
 }
 
 /* Hover effect for mobile menu items */
 .listItem:hover {
-    color: yellow; /* Change text color on hover */
-    background-color: rgba(255, 255, 0, 0.1); /* Optional background effect */
-    border-bottom: 3px solid yellow;
+    color: var(--secondary-color, #4deeea) !important;
+    background-color: rgba(77, 238, 234, 0.06);
+    border-bottom: 1px solid var(--secondary-color, #4deeea);
 }
 
-/* Show mobile menu icon on smaller screens */
-@media screen and (max-width: 1130px) {
-    .mobMenu {
-        display: flex; /* Show hamburger menu icon on mobile */
-    }
+/* Media Queries - Fixed the breakpoint logic */
+/* Desktop and large tablets - show desktop menu */
+@media screen and (min-width: 992px) {
     .desktopMenu {
-        display: none; /* Hide desktop menu on mobile */
+        display: flex !important;
     }
+    
     .desktopMenuBtn {
-        display: none; /* Hide desktop contact button on mobile */
+        display: flex !important;
+    }
+    
+    .custom-toggler {
+        display: none !important;
+    }
+    
+    .mobMenu {
+        display: flex !important;
+    }
+}
+
+/* Mobile and small tablets - show mobile menu toggle */
+@media screen and (max-width: 991.98px) {
+    .desktopMenu {
+        display: none !important;
+    }
+    
+    .desktopMenuBtn {
+        display: none !important;
+    }
+    
+    .custom-toggler {
+        display: block !important;
+    }
+    
+    .mobMenu {
+        display: block !important;
     }
 }
 
@@ -173,7 +238,7 @@
 @media screen and (max-width: 750px) {
     .logo {
         height: 4rem;
-        width: 6rem;
+        width: 4rem;
     }
 }
 
@@ -182,5 +247,10 @@
     .listItem {
         padding: 0.5rem 2rem;
         font-size: 0.9rem;
+    }
+    
+    .navMenu {
+        right: 1rem;
+        min-width: 12rem;
     }
 }

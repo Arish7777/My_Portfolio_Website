@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Navbar as BootstrapNavbar, Nav, Container, Button } from 'react-bootstrap';
 import './navbar.css';
 import navImg from './navimg.png';
 import phone from './phone.png';
@@ -80,58 +81,72 @@ const Navbar = () => {
   };
 
   return (
-    <motion.nav
-      className="navbar"
+    <motion.div
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
+      className="custom-navbar-container"
     >
-      <motion.img
-        src={navImg}
-        alt="logo"
-        className="logo"
-        whileHover={{ scale: 1.1 }}
-      />
-
-      <div className="desktopMenu">
-        {desktopSections.map((section) => (
-          <motion.button
-            key={section.id}
-            className={`desktopMenuListItem ${
-              activeSection === section.id ? 'active' : ''
-            }`}
-            onClick={() => scrollToSection(section.id)}
-            whileHover={{ scale: 1.1, color: '#ffdd57' }}
-            whileTap={{ scale: 0.95 }}
+      <BootstrapNavbar expand="lg" className="navbar py-3" variant="dark" fixed="top">
+        <Container>
+          <BootstrapNavbar.Brand href="#intro" className="p-0">
+            <motion.img
+              src={navImg}
+              alt="logo"
+              className="logo"
+              whileHover={{ scale: 1.1 }}
+            />
+          </BootstrapNavbar.Brand>
+          
+          <BootstrapNavbar.Toggle 
+            aria-controls="basic-navbar-nav" 
+            className="custom-toggler d-lg-none"
+            onClick={toggleMenu}
           >
-            {section.label}
-          </motion.button>
-        ))}
-      </div>
-
-      <motion.button
-        className="desktopMenuBtn"
-        onClick={() => scrollToSection('contact')}
-        whileHover={{ scale: 1.1, backgroundColor: '#f0f0f0' }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <img src={phone} alt="phone" className="desktopMenuImg" />
-        Contact Me
-      </motion.button>
-
-      <motion.img
-        src={menu}
-        alt="Menu"
-        className="mobMenu"
-        onClick={toggleMenu}
-        whileHover={{ scale: 1.2, rotate: 90 }}
-        whileTap={{ scale: 0.9 }}
-      />
+            <motion.img
+              src={menu}
+              alt="Menu"
+              className="mobMenu"
+              whileHover={{ scale: 1.2, rotate: 90 }}
+              whileTap={{ scale: 0.9 }}
+            />
+          </BootstrapNavbar.Toggle>
+          
+          <BootstrapNavbar.Collapse id="basic-navbar-nav" className="justify-content-between">
+            <Nav className="mx-auto desktopMenu">
+              {desktopSections.map((section) => (
+                <Nav.Link 
+                  key={section.id}
+                  className={`desktopMenuListItem mx-3 ${
+                    activeSection === section.id ? 'active' : ''
+                  }`}
+                  onClick={() => scrollToSection(section.id)}
+                  as={motion.div}
+                  whileHover={{ scale: 1.1, color: '#ffdd57' }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {section.label}
+                </Nav.Link>
+              ))}
+            </Nav>
+            
+            <motion.button
+              className="desktopMenuBtn btn btn-outline-info"
+              onClick={() => scrollToSection('contact')}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <img src={phone} alt="phone" className="desktopMenuImg" />
+              Contact Me
+            </motion.button>
+          </BootstrapNavbar.Collapse>
+        </Container>
+      </BootstrapNavbar>
 
       <AnimatePresence>
         {showMenu && (
           <motion.div
-            className="navMenu"
+            className="navMenu shadow"
             ref={menuRef}
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -141,7 +156,7 @@ const Navbar = () => {
             {mobileSections.map((section) => (
               <motion.button
                 key={section.id}
-                className={`listItem ${
+                className={`listItem btn btn-link ${
                   activeSection === section.id ? 'active' : ''
                 }`}
                 onClick={() => scrollToSection(section.id)}
@@ -153,9 +168,9 @@ const Navbar = () => {
             ))}
 
             <motion.button
-              className="listItem closeBtn"
+              className="listItem closeBtn btn btn-outline-danger mt-3"
               onClick={() => setShowMenu(false)}
-              whileHover={{ scale: 1.1, color: '#ff0000' }}
+              whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
               Close &times;
@@ -163,7 +178,7 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </motion.div>
   );
 };
 

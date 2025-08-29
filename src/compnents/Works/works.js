@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { Container, Row, Col, Card } from 'react-bootstrap';
 import "./works.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import pic1 from "./blank.jpg";
 import pic2 from "./pic2.jpg";
 import pic3 from "./pic3.png";
@@ -71,6 +73,7 @@ const Works = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
+      <Container fluid className="works-container text-center">
       <motion.h2
         className="worksTitle"
         initial={{ opacity: 0, y: -50 }}
@@ -90,69 +93,81 @@ const Works = () => {
         functionality, efficiency, and scalability. It combines creativity, technical expertise, 
         and problem-solving to bring ideas to life.
       </motion.p>
-      <div className="worksImgs">
-        {projects.map((project, index) => (
-          <motion.div
-            className="worksImgCard"
-            key={index}
-            style={{
-              display: currentImageIndex === index ? "block" : "none",
-            }}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{
-              opacity: currentImageIndex === index ? 1 : 0,
-              scale: currentImageIndex === index ? 1 : 0.8,
-            }}
-            transition={{ duration: 0.5 }}
-          >
-            <motion.img
-              src={project.image}
-              alt={`Project ${index + 1}`}
-              className="worksImg"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            />
-            <div className="worksCardContent">
-              <motion.h3
-                className="worksCardTitle"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
+      <Row className="worksImgs g-4 justify-content-center">
+        <AnimatePresence mode="wait">
+          {projects.map((project, index) => (
+            <Col lg={8} md={10} sm={11} key={index} 
+              style={{
+                display: currentImageIndex === index ? "block" : "none",
+              }}
+            >
+              <motion.div
+                className="h-100"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{
+                  opacity: currentImageIndex === index ? 1 : 0,
+                  y: currentImageIndex === index ? 0 : 50,
+                }}
+                exit={{ opacity: 0, y: -50 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
               >
-                {project.title}
-              </motion.h3>
-              <motion.p
-                className="worksCardDesc"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.2 }}
-              >
-                {project.description}
-              </motion.p>
-              <motion.a
-                href={project.githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="projectButton"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                View on GitHub
-              </motion.a>
-            </div>
-          </motion.div>
+                <Card className="works-card h-100 bg-transparent">
+                  <div className="card-img-wrapper">
+                    <motion.img
+                      src={project.image}
+                      alt={`Project ${index + 1}`}
+                      className="card-img-top worksImg"
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.4, ease: "easeOut" }}
+                    />
+                  </div>
+                  <Card.Body className="works-card-body">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: 0.2 }}
+                    >
+                      <Card.Title className="works-card-title">{project.title}</Card.Title>
+                      <Card.Text className="works-card-desc">{project.description}</Card.Text>
+                      <motion.div
+                        className="text-center mt-4"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <a
+                          href={project.githubLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="project-link"
+                        >
+                          <i className="fab fa-github me-2"></i>
+                          View on GitHub
+                        </a>
+                      </motion.div>
+                    </motion.div>
+                  </Card.Body>
+                </Card>
+              </motion.div>
+            </Col>
         ))}
-      </div>
-      <motion.button
-        className="worksBtn"
-        onClick={handleSeeMore}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        transition={{ duration: 0.2 }}
-      >
-        See More <span className="arrow">&gt;</span>
-      </motion.button>
+          </AnimatePresence>
+        </Row>
+        <Row className="justify-content-center mt-5">
+          <Col xs="auto">
+            <motion.button
+              className="works-btn"
+              onClick={handleSeeMore}
+              whileHover={{ scale: 1.1, backgroundColor: "var(--secondary-color)" }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ duration: 0.2 }}
+            >
+              See More <i className="fas fa-arrow-right ms-2"></i>
+            </motion.button>
+          </Col>
+        </Row>
+      </Container>
     </motion.section>
   );
 };

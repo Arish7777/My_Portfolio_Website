@@ -1,30 +1,183 @@
+:root {
+  --dark-navy: #0a192f;
+  --text-secondary: #e0e0e0;
+  --secondary-color: #4DEEEA;
+}
+
 .footer {
-    width: 100vw;
-    height: 3rem;
-    background-color:black;
+    width: 100%;
+    background: var(--dark-navy);
+    font-weight: 300;
+    color: var(--text-secondary);
+    border-top: 1px solid rgba(77, 238, 234, 0.1);
+    position: relative;
+    overflow: hidden;
+    padding: 1.5rem 0;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle, rgba(77, 238, 234, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    z-index: 0;
+    opacity: 0.3;
+}
+
+.footer-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.footer-text:hover {
+    color: var(--secondary-color);
+    transform: translateY(-1px);
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+    .footer-icons {
+        justify-content: flex-end;
+        margin-top: 0;
+    }
+}
+
+.footer-icon-link {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 300;
-    font-size: medium;
-    text-align: center; /* Ensure text stays centered */
-    padding: 0 1rem; /* Add padding for smaller screens */
+    border-radius: 50%;
+    border: 1px solid rgba(77, 238, 234, 0.2);
+    background: rgba(10, 25, 47, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-icon-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(77, 238, 234, 0.2), transparent);
+    transition: all 0.6s ease;
+}
+
+.footer-icon-link:hover {
+    color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(77, 238, 234, 0.3);
+    border-color: var(--secondary-color);
+}
+
+.footer-icon-link:hover::before {
+    left: 100%;
+}
+
+
+.decoration-circle {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--secondary-color);
+    opacity: 0.6;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+.decoration-circle:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.decoration-circle:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.3;
+    }
+}
+
+/* Hover effect for the entire footer */
+.footer:hover::before {
+    animation: backgroundMove 20s linear infinite;
+}
+
+@keyframes backgroundMove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
 }
 
 /* Responsive adjustments */
 @media screen and (max-width: 768px) {
     .footer {
-        font-size: small; /* Reduce font size for smaller screens */
-        height: auto; /* Allow height to adjust based on content */
-        padding: 1rem; /* Add more padding for a cleaner look */
-        flex-wrap: wrap; /* Allow content to wrap if needed */
+        padding: 1.2rem 0;
+    }
+    
+    .footer-text {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .footer-icons {
+        gap: 1rem;
+    }
+    
+    .footer-icon-link {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
     }
 }
 
 @media screen and (max-width: 480px) {
     .footer {
-        font-size: smaller; /* Further reduce font size for very small screens */
-        text-align: center; /* Ensure proper alignment */
-        padding: 0.5rem; /* Adjust padding for compact spaces */
+        padding: 1rem 0;
+    }
+    
+    .footer-text {
+        font-size: 0.85rem;
+    }
+    
+    .footer-icons {
+        gap: 0.8rem;
+    }
+    
+    .footer-icon-link {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+    
+    .decoration-circle {
+        width: 4px;
+        height: 4px;
     }
 }
