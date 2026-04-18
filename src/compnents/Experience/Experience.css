@@ -1,0 +1,720 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+:root {
+  --exp-glass-bg: rgba(255, 255, 255, 0.04);
+  --exp-glass-border: rgba(255, 255, 255, 0.10);
+  --exp-accent-cyan: #4DEEEA;
+  --exp-accent-blue: #4da8ff;
+  --exp-accent-purple: #a78bfa;
+  --exp-accent-green: #00EA64;
+  --exp-text-primary: #f0f4ff;
+  --exp-text-secondary: rgba(200, 215, 255, 0.75);
+  --exp-text-muted: rgba(160, 180, 220, 0.55);
+  --exp-bg: #060b18;
+  --exp-font-display: 'Syne', sans-serif;
+  --exp-font-body: 'DM Sans', sans-serif;
+}
+
+/* ═══════════════════════════════════════════════════════
+   SECTION WRAPPER
+═══════════════════════════════════════════════════════ */
+#experience-section {
+  font-family: var(--exp-font-body);
+  text-align: center;
+  padding: 6rem 0 8rem;
+  background-color: var(--exp-bg);
+  color: var(--exp-text-primary);
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient blobs */
+#experience-section::before {
+  content: '';
+  position: absolute;
+  top: 5%;
+  right: -10%;
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(ellipse, rgba(77, 168, 255, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#experience-section::after {
+  content: '';
+  position: absolute;
+  bottom: 10%;
+  left: -8%;
+  width: 45%;
+  height: 55%;
+  background: radial-gradient(ellipse, rgba(167, 139, 250, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Grid texture */
+.exp-grid-texture {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(77, 238, 234, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(77, 238, 234, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════════════
+   HEADER
+═══════════════════════════════════════════════════════ */
+.exp-header {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 3rem;
+}
+
+.exp-title {
+  font-family: var(--exp-font-display);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  margin: 0 0 1rem;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #f0f4ff 30%, var(--exp-accent-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.exp-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--exp-accent-cyan), var(--exp-accent-blue));
+  border-radius: 2px;
+  margin: 0.75rem auto 0;
+}
+
+.exp-subtitle {
+  font-family: var(--exp-font-body);
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--exp-text-secondary);
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* ═══════════════════════════════════════════════════════
+   SECTION SUB-HEADERS
+═══════════════════════════════════════════════════════ */
+.exp-section-subheader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.exp-section-subheader--certs {
+  margin-top: 3.5rem;
+}
+
+.exp-subheader-icon {
+  font-size: 1.3rem;
+  color: var(--exp-accent-cyan);
+  filter: drop-shadow(0 0 8px rgba(77, 238, 234, 0.5));
+}
+
+.exp-section-subheader--certs .exp-subheader-icon {
+  color: var(--exp-accent-purple);
+  filter: drop-shadow(0 0 8px rgba(167, 139, 250, 0.5));
+}
+
+.exp-subheader-title {
+  font-family: var(--exp-font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--exp-text-primary);
+  letter-spacing: -0.01em;
+}
+
+.exp-subheader-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(77, 238, 234, 0.12);
+  border: 1px solid rgba(77, 238, 234, 0.25);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--exp-accent-cyan);
+}
+
+.exp-section-subheader--certs .exp-subheader-count {
+  background: rgba(167, 139, 250, 0.12);
+  border-color: rgba(167, 139, 250, 0.25);
+  color: var(--exp-accent-purple);
+}
+
+/* Card footer — status badge + cert link side by side */
+.exp-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-top: 0.2rem;
+}
+
+/* ═══════════════════════════════════════════════════════
+   CONTENT CONTAINER
+═══════════════════════════════════════════════════════ */
+.exp-content-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* ═══════════════════════════════════════════════════════
+   INTERNSHIP CARDS
+═══════════════════════════════════════════════════════ */
+.exp-cards-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.exp-card {
+  position: relative;
+  background: var(--exp-glass-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--exp-glass-border);
+  border-radius: 24px;
+  padding: 2rem;
+  text-align: left;
+  overflow: hidden;
+  cursor: default;
+  transition: border-color 0.4s ease, box-shadow 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform-style: preserve-3d;
+}
+
+.exp-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.exp-card:hover {
+  border-color: rgba(77, 168, 255, 0.35);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(77, 168, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.exp-card-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  background: radial-gradient(ellipse at 30% 0%, rgba(77, 168, 255, 0.08) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.exp-card:hover .exp-card-glow {
+  opacity: 1;
+}
+
+.exp-card-stripe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent, #4da8ff), transparent);
+  transform-origin: left;
+  border-radius: 24px 24px 0 0;
+}
+
+/* Card Header */
+.exp-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.exp-card-icon-circle {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, rgba(77, 168, 255, 0.15), rgba(77, 168, 255, 0.05));
+  color: var(--accent, #4da8ff);
+  font-size: 1.4rem;
+  perspective: 600px;
+}
+
+.exp-card-header-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.exp-card-role {
+  font-family: var(--exp-font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent, #4da8ff);
+  margin: 0 0 0.3rem;
+  letter-spacing: -0.01em;
+}
+
+.exp-card-company {
+  font-size: 0.88rem;
+  color: var(--exp-text-muted);
+  margin: 0;
+}
+
+.exp-card-duration {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--exp-text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50px;
+  padding: 0.35rem 0.8rem;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+
+.exp-card-desc {
+  font-size: 0.92rem;
+  color: var(--exp-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+/* Highlights */
+.exp-card-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.exp-highlight {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.85rem;
+  color: var(--exp-text-secondary);
+  padding: 0.4rem 0.8rem;
+  background: rgba(77, 168, 255, 0.04);
+  border: 1px solid rgba(77, 168, 255, 0.08);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.exp-highlight:hover {
+  background: rgba(77, 168, 255, 0.08);
+  border-color: rgba(77, 168, 255, 0.2);
+  transform: translateX(4px);
+}
+
+.exp-highlight-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent, #4da8ff);
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(77, 168, 255, 0.5);
+}
+
+/* Status Badge */
+.exp-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--exp-accent-green);
+  background: rgba(0, 234, 100, 0.08);
+  border: 1px solid rgba(0, 234, 100, 0.2);
+  border-radius: 50px;
+  padding: 0.35rem 0.9rem;
+}
+
+/* View Certificate Link (on internship cards) */
+.exp-cert-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--exp-accent-cyan);
+  background: rgba(77, 238, 234, 0.08);
+  border: 1px solid rgba(77, 238, 234, 0.2);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+  text-decoration: none;
+}
+
+.exp-cert-link:hover {
+  background: rgba(77, 238, 234, 0.16);
+  border-color: rgba(77, 238, 234, 0.45);
+  box-shadow: 0 4px 20px rgba(77, 238, 234, 0.15);
+  color: #fff;
+}
+
+/* ═══════════════════════════════════════════════════════
+   CERTIFICATION CARDS
+═══════════════════════════════════════════════════════ */
+.exp-cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+  gap: 2.5rem;
+  padding: 1.5rem 0;
+}
+
+.exp-cert-card {
+  position: relative;
+  background: var(--exp-glass-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--exp-glass-border);
+  border-radius: 20px;
+  padding: 2.2rem 1.8rem 3.5rem;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+  min-height: 280px;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.exp-cert-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  pointer-events: none;
+}
+
+.exp-cert-card:hover {
+  border-color: rgba(167, 139, 250, 0.35);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(167, 139, 250, 0.08);
+  transform: translateY(-6px) scale(1.02);
+}
+
+.exp-cert-card.competitive:hover {
+  border-color: rgba(0, 234, 100, 0.35);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 234, 100, 0.08);
+}
+
+.exp-cert-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(167, 139, 250, 0.1) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.exp-cert-card.competitive .exp-cert-glow {
+  background: radial-gradient(circle at 50% 0%, rgba(0, 234, 100, 0.1) 0%, transparent 60%);
+}
+
+.exp-cert-card:hover .exp-cert-glow {
+  opacity: 1;
+}
+
+.exp-cert-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-size: 1.4rem;
+  color: var(--cert-color, #a78bfa);
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.15), rgba(167, 139, 250, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.exp-cert-card.competitive .exp-cert-icon {
+  color: var(--exp-accent-green);
+  background: linear-gradient(135deg, rgba(0, 234, 100, 0.15), rgba(0, 234, 100, 0.05));
+}
+
+.exp-cert-title {
+  font-family: var(--exp-font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--exp-text-primary);
+  margin: 0 0 0.6rem;
+  letter-spacing: -0.01em;
+  min-height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exp-cert-issuer {
+  font-size: 0.82rem;
+  color: var(--exp-text-muted);
+  margin: 0 0 0.8rem;
+}
+
+.exp-cert-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: 50px;
+  color: var(--cert-color, #a78bfa);
+  background: rgba(167, 139, 250, 0.08);
+  border: 1px solid rgba(167, 139, 250, 0.15);
+}
+
+.exp-cert-card.competitive .exp-cert-badge {
+  color: var(--exp-accent-green);
+  background: rgba(0, 234, 100, 0.08);
+  border-color: rgba(0, 234, 100, 0.15);
+}
+
+.exp-cert-view-hint {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.6rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--exp-accent-cyan);
+  background: linear-gradient(to top, rgba(6, 11, 24, 0.95), rgba(6, 11, 24, 0.4) 60%, transparent);
+  border-top: 1px solid rgba(77, 238, 234, 0.15);
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+}
+
+.exp-cert-card:hover .exp-cert-view-hint {
+  background: linear-gradient(to top, rgba(6, 11, 24, 1), rgba(77, 238, 234, 0.1));
+  color: #fff;
+}
+
+/* ═══════════════════════════════════════════════════════
+   STATS BAR
+═══════════════════════════════════════════════════════ */
+.exp-stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 4rem;
+  position: relative;
+  z-index: 2;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+}
+
+.exp-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 1.2rem 2rem;
+  background: var(--exp-glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--exp-glass-border);
+  border-radius: 20px;
+  transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  cursor: default;
+  min-width: 110px;
+}
+
+.exp-stat:hover {
+  border-color: rgba(77, 238, 234, 0.3);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(77, 238, 234, 0.06);
+}
+
+.exp-stat-icon {
+  font-size: 1.2rem;
+  color: var(--exp-accent-cyan);
+  filter: drop-shadow(0 0 8px rgba(77, 238, 234, 0.5));
+}
+
+.exp-stat-value {
+  font-family: var(--exp-font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #f0f4ff, var(--exp-accent-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.exp-stat-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--exp-text-muted);
+  letter-spacing: 0.02em;
+}
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════ */
+@media (max-width: 992px) {
+  .exp-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .exp-card-duration {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  #experience-section {
+    padding: 4rem 0 6rem;
+  }
+
+  .exp-title {
+    font-size: 2rem;
+  }
+
+  .exp-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .exp-tab-bar {
+    gap: 0.6rem;
+  }
+
+  .exp-tab {
+    padding: 0.6rem 1.1rem;
+    font-size: 0.82rem;
+  }
+
+  .exp-tab-label {
+    display: none;
+  }
+
+  .exp-cert-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .exp-card {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .exp-stats-bar {
+    gap: 1rem;
+  }
+
+  .exp-stat {
+    padding: 1rem 1.3rem;
+    min-width: 90px;
+  }
+
+  .exp-stat-value {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .exp-cert-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+  }
+
+  .exp-card-icon-circle {
+    width: 48px;
+    height: 48px;
+    font-size: 1.1rem;
+  }
+
+  .exp-card-role {
+    font-size: 1.1rem;
+  }
+
+  .exp-stat {
+    padding: 0.8rem 1rem;
+    min-width: 75px;
+  }
+
+  .exp-stat-value {
+    font-size: 1.4rem;
+  }
+
+  .exp-stat-label {
+    font-size: 0.7rem;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════════════════════ */
+@keyframes expFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes expGlowPulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 15px rgba(77, 238, 234, 0.1);
+  }
+
+  50% {
+    box-shadow: 0 0 30px rgba(77, 238, 234, 0.2);
+  }
+}
