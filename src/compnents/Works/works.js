@@ -118,7 +118,7 @@ const MobilePileCard = ({ project, index, total, onOpen }) => {
           <div className="folder-back"></div>
           {/* Animated Content (Project Image) */}
           <div className="folder-content-preview">
-            <img src={project.image} alt={project.title} loading="lazy" decoding="async" />
+            <img src={project.image} alt={project.title} />
           </div>
           {/* Front Plate */}
           <div className="folder-front">
@@ -225,7 +225,7 @@ const Works = () => {
                     }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >
-                    <img src={project.image} alt={project.title} loading="lazy" decoding="async" />
+                    <img src={project.image} alt={project.title} />
                   </motion.div>
                   <div className="folder-front">
                     <div className="folder-info">
@@ -277,7 +277,7 @@ const Works = () => {
                   <i className="fas fa-times"></i>
                 </button>
                 
-                <img src={selectedProject.image} alt={selectedProject.title} className="modal-header-img" loading="lazy" decoding="async" />
+                <img src={selectedProject.image} alt={selectedProject.title} className="modal-header-img" />
                 
                 <div className="modal-body text-start">
                   <h2 className="modal-title">{selectedProject.title}</h2>

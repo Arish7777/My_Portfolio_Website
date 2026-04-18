@@ -253,9 +253,9 @@ const BookModal = ({ service, onClose, bookRef, tilt }) => {
                     transition={{ duration: 0.3 }}
                   >
                     {page.type === 'video' ? (
-                      <video src={page.src} muted loop autoPlay playsInline className="modal-media" preload="none" />
+                      <video src={page.src} muted loop autoPlay playsInline className="modal-media" />
                     ) : page.type === 'image' ? (
-                      <img src={page.src} alt="" className="modal-media" loading="lazy" decoding="async" />
+                      <img src={page.src} alt="" className="modal-media" />
                     ) : (
                       <div className="modal-info-page" style={{ borderLeft: `3px solid ${c.accent}` }}>
                         <div className="modal-info-icon" style={{ background: `${c.accent}18`, color: c.accent }}>
