@@ -288,8 +288,7 @@ const Skills = () => {
       <motion.h1
         className="skillTitle"
         initial={{ opacity: 0, y: -40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
       >
         About Me
@@ -298,8 +297,7 @@ const Skills = () => {
       <motion.p
         className="skillDesc"
         initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.5 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2, ease: [0.23, 1, 0.32, 1] }}
       >
         A skilled and passionate developer with expertise in creating visually
@@ -312,8 +310,7 @@ const Skills = () => {
           className="row g-4 justify-content-center skills-3d-wrapper"
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          animate="visible"
         >
           {cards.map((card) => {
             return (
